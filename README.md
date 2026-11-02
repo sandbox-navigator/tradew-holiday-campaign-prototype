@@ -2,4 +2,6 @@
 
 圣诞活动与新年挑战赛的交互演示。页面中的交易、入金、榜单与奖励数值为演示数据。
 
-打开 `index.html` 可本地预览；启用 GitHub Pages 后可通过网页链接分享。
+**[在线查看交互原型](https://sandbox-navigator.github.io/tradew-holiday-campaign-prototype/)**
+
+也可下载仓库后打开 `index.html` 本地预览。
