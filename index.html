@@ -2459,6 +2459,21 @@ html>body{padding:0}</style>
 #festive-hub .fh-view-newyear .fh-hero #fh-hero-tagline{font-size:11px;color:#ffe0a1;margin-top:1px}
 #festive-hub .fh-view-newyear .fh-hero small{margin-top:2px}
 #festive-hub .fh-ny-phase-home>.fh-ny-promo-grid:first-child{margin:0 0 12px}
+#festive-hub .fh-reward-stage{margin-bottom:20px}
+#festive-hub .fh-reward-stage .fh-pool-highlight{min-height:143px;padding:22px 20px 20px;border:1.5px solid #e9c982;border-radius:19px;background:radial-gradient(circle at 87% 23%,#c5875360 0%,transparent 37%),linear-gradient(130deg,#72243e 0%,#4a1834 60%,#32142b 100%);box-shadow:0 9px 22px #160c1b8c,inset 0 1px #ffe9b788}
+#festive-hub .fh-reward-stage .fh-pool-highlight:before{content:'✦';inset:auto;right:20px;top:14px;border:0;color:#f3cf88;font-size:28px;line-height:1}
+#festive-hub .fh-reward-stage .fh-pool-highlight small{font-size:12px;color:#f2d69c}
+#festive-hub .fh-reward-stage .fh-pool-highlight strong{font-size:clamp(24px,6.6vw,30px);color:#fff7dc;text-shadow:0 2px 8px #2c0b23;margin-top:9px}
+#festive-hub .fh-reward-stage .fh-pool-promise{display:inline-block;margin:10px 0 0!important;padding:5px 10px;border:1px solid #f4d89a99;border-radius:20px;background:#f9db9550;color:#fff1cc;font-size:11px}
+#festive-hub .fh-task-journey{margin:0 3px 13px;color:#fff8e8}
+#festive-hub .fh-task-journey-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+#festive-hub .fh-task-journey-head h2{font-size:16px;line-height:1.3;margin:0}
+#festive-hub .fh-task-journey-head b{font-size:12px;color:#f5d48b;white-space:nowrap}
+#festive-hub .fh-task-journey .fh-quest-track{height:5px;margin:10px 0 8px;background:#fff0cf4f}
+#festive-hub .fh-task-journey .fh-quest-labels{justify-content:space-between;gap:6px}
+#festive-hub .fh-task-journey .fh-quest-labels span{padding:0;border:0;background:transparent;color:#c9d5c9;font-size:10px}
+#festive-hub .fh-task-journey .fh-quest-labels span.done{color:#f9dfa4}
+#festive-hub .fh-task-journey .fh-qualified-note{margin:7px 0 0!important;color:#f7ddaa}
 </style>
 <div id="festive-hub" class="viz-dotted-background">
  <div class="fh-stage">
@@ -2516,9 +2531,11 @@ function renderX(){
  const i=state.gift,v=cfg.gifts[i],done=state.purchased[i],hasGift=state.purchased.some(Boolean),tradeDone=state.xLots>=0.5,qualified=qualifies();
  if(!activeX()){$('#fh-x').innerHTML='<div class="fh-x-ended">'+(qualified?(state.xPaid?'<p>恭喜获得</p><strong>'+money(cfg.christmasDemoReward)+' <small>USDT</small></strong><p>已自动发放至理财账户</p>':'<h2>奖励结算中</h2><p>已获得瓜分资格，到账后将通知你</p>'):'<h2>未获得瓜分资格</h2><p>未完成全部任务</p>')+'</div><section class="fh-task-card"><div class="fh-row"><h3>入金礼包</h3><span class="fh-task-status">'+(hasGift?'已完成':'未完成')+'</span></div><div class="fh-row fh-ended-trade"><h3>交易 0.5 标准手</h3><span class="fh-task-status">'+(tradeDone?'已完成':'未完成')+'</span></div></section>';return}
  const completed=Number(hasGift)+Number(tradeDone);
- const reward='<div class="fh-pool-highlight"><small>圣诞惊喜好礼</small><strong>'+'瓜分30万现金红包</strong><p class="fh-pool-promise">获得资格后100%中奖</p>'+'<div class="fh-quest-progress"><div class="fh-quest-progress-head"><span>任务进度</span><b>已完成 '+completed+' / 2 项</b></div><div class="fh-quest-track"><i style="width:'+completed*50+'%"></i></div><div class="fh-quest-labels"><span class="'+(hasGift?'done':'')+'">'+(hasGift?'✓ ':'')+'入金礼包</span><span class="'+(tradeDone?'done':'')+'">'+(tradeDone?'✓ ':'')+'交易 0.5 手</span></div></div>'+(qualified?'<p class="fh-qualified-note">已获得瓜分资格 · 活动结束后自动瓜分</p>':'')+'</div>';
+ const reward='<div class="fh-pool-highlight"><small>圣诞惊喜好礼</small><strong>瓜分30万现金红包</strong><p class="fh-pool-promise">获得资格后100%中奖</p></div>';
+ const taskIntro='<div class="fh-task-journey"><div class="fh-task-journey-head"><h2>'+(qualified?'已获得瓜分资格':'完成以下两项任务')+'</h2><b>'+completed+' / 2 已完成</b></div><div class="fh-quest-track"><i style="width:'+completed*50+'%"></i></div><div class="fh-quest-labels"><span class="'+(hasGift?'done':'')+'">'+(hasGift?'✓ ':'')+'入金礼包</span><span class="'+(tradeDone?'done':'')+'">'+(tradeDone?'✓ ':'')+'交易 0.5 标准手</span></div>'+(qualified?'<p class="fh-qualified-note">活动结束后自动瓜分奖励</p>':'')+'</div>';
  $('#fh-x').innerHTML='<div class="fh-reward-stage">'+reward+'</div>'+
  (!state.opened&&!qualified&&activeX()?'<button type="button" class="fh-secondary cursor-interaction" data-act="showBox">拆开礼盒</button>':'')+
+ taskIntro+
  '<section class="fh-task-card"><div class="fh-task-title"><span class="fh-task-icon">'+icon('gift')+'</span><div><h3>入金礼包</h3><small>任选一档，每档限一次</small></div><span class="fh-task-status">'+(hasGift?icon('check')+'已完成':'待完成')+'</span></div><div class="fh-giftgrid">'+gifts()+'</div>'+
  (activeX()&&!done?'<button type="button" class="fh-primary cursor-interaction" data-act="buyGift">去入金 '+v+' USDT</button>':'')+'</section>'+
  '<section class="fh-task-card"><div class="fh-task-title"><span class="fh-task-icon">'+icon('chart-no-axes-combined')+'</span><div><h3>交易 0.5 标准手</h3><small>累计交易量</small></div><span class="fh-task-status">'+(tradeDone?icon('check')+'已完成':'待完成')+'</span></div><div class="fh-trade-progress"><strong>'+fmt(state.xLots)+' <small>/ 0.5 手</small></strong><div class="fh-bar"><div style="width:'+Math.min(100,state.xLots/0.5*100)+'%"></div></div></div>'+
