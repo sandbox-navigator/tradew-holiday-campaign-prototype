@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="zh-CN" data-visualize-standalone>
+<html lang="en" data-visualize-standalone>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com https://persistent.oaistatic.com/plugins/visualize/; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src 'self' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>Trade W 双节活动交互原型</title>
+<title>TradeW 双节活动交互原型</title>
 <style>:root {
   color-scheme: light dark;
   background-color: var(
@@ -2443,6 +2443,22 @@ html>body{padding:0}</style>
 
 #festive-hub .fh-ny-phase-home{padding:1px 1px 24px}#festive-hub .fh-ny-phase-home .fh-ny-steps{margin-bottom:12px}#festive-hub .fh-ny-promo-grid{display:grid;gap:10px;margin-top:12px}#festive-hub .fh-ny-promo{position:relative;display:block;width:100%;min-height:88px;padding:13px 14px;text-align:left;border:1px solid #e0bd7b77;border-radius:15px;color:#f9e4b6;background:linear-gradient(115deg,#523a2d,#1d2947 65%)}#festive-hub .fh-ny-promo span{display:block;font-size:10px;color:#f3d197}#festive-hub .fh-ny-promo strong{display:block;max-width:66%;margin-top:7px;font-size:14px}#festive-hub .fh-ny-promo-prize img{position:absolute;right:5px;bottom:2px;width:39%;height:83px;object-fit:contain}#festive-hub .fh-ny-promo-rebate{min-height:77px;background:linear-gradient(110deg,#143c37,#1d2947)}#festive-hub .fh-ny-promo-rebate strong{max-width:100%}#festive-hub .fh-ny-promo em{display:block;margin-top:7px;font-size:10px;color:#ead19d;font-style:normal}#festive-hub .fh-dock-note{margin:0 0 9px;text-align:center;font-size:11px;color:#d6c7a9}#festive-hub .fh-dock-board-link{margin-left:auto;padding:6px 2px;border:0;background:transparent;color:#f1d397;font-size:11px;white-space:nowrap}#festive-hub .fh-ny-timeline-point{cursor:default}#festive-hub .fh-ny-timeline-point.current{background:#e5bf7833}
 #festive-hub .fh-popup-ready{margin:12px 0;color:#256348;font-size:13px;font-weight:700;text-align:center}
+#festive-hub .fh-reward-stage .fh-pool-highlight{padding:18px 17px 16px}
+#festive-hub .fh-reward-stage .fh-pool-highlight strong{font-size:clamp(22px,6vw,27px);white-space:normal;line-height:1.2;margin-top:6px}
+#festive-hub .fh-pool-promise{font-size:12px;color:#fff0c8;margin:6px 0 14px!important}
+#festive-hub .fh-quest-progress{border-top:1px solid #ffe4a766;padding-top:10px}
+#festive-hub .fh-quest-progress-head{display:flex;align-items:center;justify-content:space-between;font-size:11px;color:#fff5d8}
+#festive-hub .fh-quest-progress-head b{font-size:12px;color:#ffe1a0}
+#festive-hub .fh-quest-track{height:6px;margin:8px 0 9px;border-radius:8px;background:#fff6da40;overflow:hidden}
+#festive-hub .fh-quest-track i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,#f5bf5a,#fff2b6);transition:width .35s ease}
+#festive-hub .fh-quest-labels{display:flex;gap:8px;flex-wrap:wrap}
+#festive-hub .fh-quest-labels span{padding:3px 7px;border:1px solid #fff4d377;border-radius:20px;font-size:10px;color:#f4dfb7}
+#festive-hub .fh-quest-labels span.done{background:#fff3cc;color:#155d3e;border-color:#fff3cc}
+#festive-hub .fh-qualified-note{font-size:11px;color:#fff4d2;margin:10px 0 0!important}
+#festive-hub .fh-view-newyear .fh-hero{height:96px;padding:8px 10px}
+#festive-hub .fh-view-newyear .fh-hero #fh-hero-tagline{font-size:11px;color:#ffe0a1;margin-top:1px}
+#festive-hub .fh-view-newyear .fh-hero small{margin-top:2px}
+#festive-hub .fh-ny-phase-home>.fh-ny-promo-grid:first-child{margin:0 0 12px}
 </style>
 <div id="festive-hub" class="viz-dotted-background">
  <div class="fh-stage">
@@ -2452,7 +2468,7 @@ html>body{padding:0}</style>
   <main class="fh-phone" aria-label="TradeW 双节会场">
    <div class="fh-starfield" aria-hidden="true"></div>
    <header class="fh-nav"><b class="fh-brand">Trade W</b><button class="fh-link cursor-interaction" type="button" data-act="rules">活动规则</button></header>
-   <div class="fh-hero"><h1 id="fh-hero-title">圣诞有礼</h1><p id="fh-hero-sub">礼盒惊喜 · 入金礼包</p><small id="fh-hero-date">2026.12.10 — 12.25</small><span class="fh-ornament" aria-hidden="true"><i data-lucide="gift"></i></span></div>
+   <div class="fh-hero"><h1 id="fh-hero-title">圣诞有礼</h1><p id="fh-hero-sub">礼盒惊喜 · 入金礼包</p><p id="fh-hero-tagline" hidden>好礼等你来赢</p><small id="fh-hero-date">2026.12.10 — 12.25</small><span class="fh-ornament" aria-hidden="true"><i data-lucide="gift"></i></span></div>
    <nav class="fh-entries" aria-label="选择活动">
     <button type="button" class="fh-entry cursor-interaction" data-view="x" aria-pressed="true"><strong>圣诞活动</strong><span class="fh-state" id="fh-xentry">进行中</span></button>
     <button type="button" class="fh-entry cursor-interaction" data-view="n" hidden aria-pressed="false"><strong>新年挑战赛</strong><span class="fh-state" id="fh-nentry">第 1 轮进行中</span></button>
@@ -2499,11 +2515,10 @@ function gifts(){return cfg.gifts.map((v,i)=>'<button type="button" class="fh-gi
 function renderX(){
  const i=state.gift,v=cfg.gifts[i],done=state.purchased[i],hasGift=state.purchased.some(Boolean),tradeDone=state.xLots>=0.5,qualified=qualifies();
  if(!activeX()){$('#fh-x').innerHTML='<div class="fh-x-ended">'+(qualified?(state.xPaid?'<p>恭喜获得</p><strong>'+money(cfg.christmasDemoReward)+' <small>USDT</small></strong><p>已自动发放至理财账户</p>':'<h2>奖励结算中</h2><p>已获得瓜分资格，到账后将通知你</p>'):'<h2>未获得瓜分资格</h2><p>未完成全部任务</p>')+'</div><section class="fh-task-card"><div class="fh-row"><h3>入金礼包</h3><span class="fh-task-status">'+(hasGift?'已完成':'未完成')+'</span></div><div class="fh-row fh-ended-trade"><h3>交易 0.5 标准手</h3><span class="fh-task-status">'+(tradeDone?'已完成':'未完成')+'</span></div></section>';return}
- const reward=qualified?'<div class="fh-pool-highlight fh-qualified-card"><small>圣诞挑战已完成</small><strong>已获得瓜分资格</strong><p>活动结束后自动瓜分奖励</p></div>':'<div class="fh-pool-highlight"><small>圣诞惊喜</small><strong>'+(state.opened?'瓜分300000 USDT':'拆开礼盒揭晓')+'</strong>'+(state.opened?'<p class="fh-pool-subtitle">活动结束后开启</p>':'')+'</div>';
+ const completed=Number(hasGift)+Number(tradeDone);
+ const reward='<div class="fh-pool-highlight"><small>圣诞惊喜好礼</small><strong>'+(state.opened||qualified?'瓜分30万现金红包':'拆开礼盒揭晓')+'</strong>'+(state.opened||qualified?'<p class="fh-pool-promise">获得资格后100%中奖</p>':'<p class="fh-pool-promise">完成任务，开启圣诞惊喜</p>')+'<div class="fh-quest-progress"><div class="fh-quest-progress-head"><span>任务进度</span><b>已完成 '+completed+' / 2 项</b></div><div class="fh-quest-track"><i style="width:'+completed*50+'%"></i></div><div class="fh-quest-labels"><span class="'+(hasGift?'done':'')+'">'+(hasGift?'✓ ':'')+'入金礼包</span><span class="'+(tradeDone?'done':'')+'">'+(tradeDone?'✓ ':'')+'交易 0.5 手</span></div></div>'+(qualified?'<p class="fh-qualified-note">已获得瓜分资格 · 活动结束后自动瓜分</p>':'')+'</div>';
  $('#fh-x').innerHTML='<div class="fh-reward-stage">'+reward+'</div>'+
  (!state.opened&&!qualified&&activeX()?'<button type="button" class="fh-secondary cursor-interaction" data-act="showBox">拆开礼盒</button>':'')+
- '<div class="fh-challenge-head"><h2>圣诞挑战</h2></div>'+
- (qualified?'':'<p class="fh-challenge-hint">完成以下两项任务，即可参与瓜分</p>')+
  '<section class="fh-task-card"><div class="fh-task-title"><span class="fh-task-icon">'+icon('gift')+'</span><div><h3>入金礼包</h3><small>任选一档，每档限一次</small></div><span class="fh-task-status">'+(hasGift?icon('check')+'已完成':'待完成')+'</span></div><div class="fh-giftgrid">'+gifts()+'</div>'+
  (activeX()&&!done?'<button type="button" class="fh-primary cursor-interaction" data-act="buyGift">去入金 '+v+' USDT</button>':'')+'</section>'+
  '<section class="fh-task-card"><div class="fh-task-title"><span class="fh-task-icon">'+icon('chart-no-axes-combined')+'</span><div><h3>交易 0.5 标准手</h3><small>累计交易量</small></div><span class="fh-task-status">'+(tradeDone?icon('check')+'已完成':'待完成')+'</span></div><div class="fh-trade-progress"><strong>'+fmt(state.xLots)+' <small>/ 0.5 手</small></strong><div class="fh-bar"><div style="width:'+Math.min(100,state.xLots/0.5*100)+'%"></div></div></div>'+
@@ -2529,8 +2544,12 @@ else body+='<section class="fh-mine"><div class="fh-row"><h3>我的本轮表现<
 $('#fh-n').innerHTML=body}
 
 function phaseTimeline(){const pre=state.phase===0,ended=state.phase===5,upto=pre?0:ended?4:current()+1;return '<section class="fh-ny-timeline"><div class="fh-row"><h3>四轮奖池逐周递增</h3><span>合计 100 万 USDT</span></div><p>'+(pre?'12 月 19 日开启':ended?'四轮奖池已结算':'已开启轮次奖池合计 <b>'+fmt(cfg.pools.slice(0,upto).reduce((a,v)=>a+v,0))+' USDT</b>')+'</p><div class="fh-ny-timeline-track" aria-label="四轮奖池时间进度">'+cfg.pools.map((pool,i)=>'<div class="fh-ny-timeline-point '+(pre?'future':status(i))+'"><i></i><small>第 '+(i+1)+' 轮 · '+cfg.dates[i]+'</small><strong>'+fmt(pool)+' USDT</strong><em>'+(pre?'未开始':status(i)==='past'?(entered(i)?'已结算 · 我的奖金 '+money(board(i).reward)+' USDT':'未参与本轮'):status(i)==='future'?'未开始':'进行中')+'</em></div>').join('')+'</div><small class="fh-ny-timeline-note">各轮按日期开启，奖金以正式活动规则为准</small></section>'}
-function nyBanners(pre){return '<div class="fh-ny-promo-grid">'+(pre?'<div class="fh-ny-promo fh-ny-promo-prize" aria-label="交易总榜实物大奖预告">':'<button type="button" class="fh-ny-promo fh-ny-promo-prize" data-act="ultimate">')+'<span>交易总榜 · 实物大奖</span><strong>汽车 · 摩托车 · iPhone</strong><img src="newyear-prizes-transparent.png" alt="奖品示意">'+(pre?'</div>':'<em>查看总榜 ›</em></button>')+(pre?'<div class="fh-ny-promo fh-ny-promo-rebate" aria-label="入金手续费返现预告">':'<button type="button" class="fh-ny-promo fh-ny-promo-rebate" data-act="feeBenefits">')+'<span>入金享手续费返现</span><strong>交易手续费最高返 15%</strong>'+(pre?'</div>':'<em>查看返现详情 ›</em></button>')+'</div>'}
-function renderN(){if(nyPanel==='weekly'){renderNDetail();$('#fh-n').insertAdjacentHTML('afterbegin','<button type="button" class="fh-ny-back" data-act="nyBack">‹ 返回新年活动</button>');return}const pre=state.phase===0;$('#fh-n').innerHTML='<div class="fh-ny-phase-home">'+(pre?'<div class="fh-ny-steps" aria-label="参与流程"><div><b>1</b><span><strong>提前报名</strong><small>开赛后自动参赛</small></span></div><div><b>2</b><span><strong>交易冲榜</strong><small>每轮交易计入周榜与总榜</small></span></div><div><b>3</b><span><strong>奖励到账</strong><small>每轮结束后自动发放</small></span></div></div>':'')+phaseTimeline()+nyBanners(pre)+'</div>'}
+function nyBanners(pre,part='both'){
+ const prize=(pre?'<div class="fh-ny-promo fh-ny-promo-prize" aria-label="交易总榜实物大奖预告">':'<button type="button" class="fh-ny-promo fh-ny-promo-prize" data-act="ultimate">')+'<span>交易总榜 · 实物大奖</span><strong>汽车 · 摩托车 · iPhone</strong><img src="newyear-prizes-transparent.png" alt="奖品示意">'+(pre?'</div>':'<em>查看总榜 ›</em></button>');
+ const rebate=(pre?'<div class="fh-ny-promo fh-ny-promo-rebate" aria-label="入金手续费返现预告">':'<button type="button" class="fh-ny-promo fh-ny-promo-rebate" data-act="feeBenefits">')+'<span>入金享手续费返现</span><strong>交易手续费最高返 15%</strong>'+(pre?'</div>':'<em>查看返现详情 ›</em></button>');
+ return '<div class="fh-ny-promo-grid">'+(part==='both'||part==='prize'?prize:'')+(part==='both'||part==='rebate'?rebate:'')+'</div>'
+}
+function renderN(){if(nyPanel==='weekly'){renderNDetail();$('#fh-n').insertAdjacentHTML('afterbegin','<button type="button" class="fh-ny-back" data-act="nyBack">‹ 返回新年活动</button>');return}const pre=state.phase===0;$('#fh-n').innerHTML='<div class="fh-ny-phase-home">'+(pre?'<div class="fh-ny-steps" aria-label="参与流程"><div><b>1</b><span><strong>提前报名</strong><small>开赛后自动参赛</small></span></div><div><b>2</b><span><strong>交易冲榜</strong><small>每轮交易计入周榜与总榜</small></span></div><div><b>3</b><span><strong>奖励到账</strong><small>每轮结束后自动发放</small></span></div></div>':'')+(pre?phaseTimeline()+nyBanners(true):nyBanners(false,'rebate')+phaseTimeline()+nyBanners(false,'prize'))+'</div>'}
 function prepareSettlements(){
  if(resultPreview)return;
  if(!activeX()&&state.xPaid&&qualifies()&&!state.xNoticeSeen&&!state.settlementQueue.some(n=>n.kind==='christmas'))state.settlementQueue.push({kind:'christmas'});
@@ -2577,12 +2596,12 @@ function renderEntryOverlay(){
 }
 function render(){
  prepareSettlements();
- const teaser=$('#fh-ny-teaser');if(teaser){teaser.querySelector('strong').textContent=state.joined!==null?'新年挑战赛 · 已报名':'新年挑战赛预告'}
+ const teaser=$('#fh-ny-teaser');if(teaser){teaser.querySelector('strong').textContent=state.phase===0?(state.joined!==null?'新年挑战赛 · 已报名':'新年挑战赛预告'):'新年挑战赛进行中';teaser.dataset.act=state.phase===0?'preNy':'openNewYear'}
  const phone=root.querySelector('.fh-phone');phone.classList.toggle('fh-view-newyear',state.view==='n');phone.classList.toggle('fh-compact',cfg.compact);phone.classList.toggle('fh-year-only',state.phase>=2);
  root.querySelectorAll('.fh-demo-btn').forEach(b=>b.setAttribute('aria-pressed',b.dataset.scene===demoScene));
  $('#fh-phase').value=state.phase;
  const xVisible=true,nyVisible=true;root.querySelector('[data-view="x"]').hidden=false;root.querySelector('[data-view="n"]').hidden=false;root.querySelector('.fh-entries').hidden=false;
- $('#fh-ny-slot').hidden=true;$('#fh-hero-title').textContent=state.view==='n'?'新年三重礼':state.phase===0?'圣诞有礼':'双节会场';$('#fh-hero-sub').textContent=state.view==='n'?'交易挑战 · 实物大奖 · 手续费返现':state.phase===0?'礼盒惊喜 · 入金礼包':'圣诞入金礼包 · 新年交易挑战';$('#fh-hero-date').textContent=state.view==='n'?'2026.12.19 — 2027.01.15':state.phase===0?'2026.12.10 — 12.25':'2026.12.10 — 2027.01.15';
+ $('#fh-ny-slot').hidden=state.view!=='x'||state.phase===5;$('#fh-hero-title').textContent=state.view==='n'?'新年三重礼':state.phase===0?'圣诞有礼':'双节会场';$('#fh-hero-sub').textContent=state.view==='n'?'交易返现 · 百万奖池 · 豪华实物奖':state.phase===0?'礼盒惊喜 · 入金礼包':'圣诞入金礼包 · 新年交易挑战';$('#fh-hero-tagline').hidden=state.view!=='n';$('#fh-hero-date').textContent=state.view==='n'?'2026.12.19 — 2027.01.15':state.phase===0?'2026.12.10 — 12.25':'2026.12.10 — 2027.01.15';
  root.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.view===state.view));
  root.querySelector('.fh-entries').dataset.active=state.view;
  $('#fh-x').hidden=state.view!=='x';$('#fh-n').hidden=state.view!=='n';
